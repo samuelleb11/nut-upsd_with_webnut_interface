@@ -50,7 +50,7 @@ username = 'monitor'
 password = '$API_PASSWORD'
 EOF
 
-sed -i 's/MODE=/MODE=standalone/g' /etc/nut.conf
+sed -i 's/MODE=none/MODE=standalone/g' /etc/nut/nut.conf
 
 # Use supervisord to start all processes
 echo -e "Starting supervisord"
