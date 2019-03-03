@@ -46,7 +46,7 @@ chmod -R o-rwx /etc/nut
 cat >/app/webNUT/webnut/config.py <<EOF
 server = '127.0.0.1'
 port = '3493'
-username = 'monitor'
+username = '$API_USER'
 password = '$API_PASSWORD'
 EOF
 
