@@ -36,7 +36,6 @@ RUN pip install setuptools \
 
 # Add run and set permissions
 ADD run.sh /run.sh
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chmod +x /run.sh
 
 WORKDIR /app/webNUT
