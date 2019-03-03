@@ -34,11 +34,12 @@ RUN mkdir /app\
 
 # Add run and set permissions
 ADD run.sh /run.sh
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chmod +x /run.sh
 
 WORKDIR /app/webNUT
 
-VOLUME ["/app/webNUT/webnut/", ""]
+VOLUME ["/app/webNUT/webnut/", "/etc/nut/"]
 
 EXPOSE 3493 6543
 
