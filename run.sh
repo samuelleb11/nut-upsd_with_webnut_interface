@@ -35,7 +35,7 @@ cat >/etc/nut/upsd.users <<EOF
 EOF
 
 cat >/etc/nut/upsmon.conf <<EOF
-MONITOR $UPS_NAME@localhost 1 monitor $API_PASSWORD master
+MONITOR $UPS_NAME@localhost 1 $API_USER $API_PASSWORD master
 SHUTDOWNCMD "$SHUTDOWN_CMD"
 EOF
 
