@@ -3,12 +3,12 @@
 # Auto generate passwords if not provided
 if [[ -z "$API_PASSWORD" ]];
 then
-   API_PASSWORD=$(dd if=/dev/urandom bs=18 count=1 2>/dev/null | base64)
+   API_PASSWORD=$(dd if=/dev/urandom bs=10 count=1 2>/dev/null | base64)
 fi
 
 if [[ -z "$ADMIN_PASSWORD" ]];
 then
-   ADMIN_PASSWORD=$(dd if=/dev/urandom bs=18 count=1 2>/dev/null | base64)
+   ADMIN_PASSWORD=$(dd if=/dev/urandom bs=10 count=1 2>/dev/null | base64)
 fi
 
 # Populate nut-upsd config files
@@ -29,7 +29,7 @@ cat >/etc/nut/upsd.users <<EOF
 	actions = set
 	actions = fsd
 	instcmds = all
-[monitor]
+[$API_USER]
 	password = $API_PASSWORD
 	upsmon master
 EOF
