@@ -3,12 +3,12 @@
 # Auto generate passwords if not provided
 if [[ -z "$API_PASSWORD" ]];
 then
-   API_PASSWORD=$(dd if=/dev/urandom bs=10 count=1 2>/dev/null | base64)
+   API_PASSWORD=$(date | md5sum | cut -c1,5,9,7,4,3,5,1,7,2,3)
 fi
 
 if [[ -z "$ADMIN_PASSWORD" ]];
 then
-   ADMIN_PASSWORD=$(dd if=/dev/urandom bs=10 count=1 2>/dev/null | base64)
+   ADMIN_PASSWORD=$(date | md5sum | cut -c1,5,9,7,4,3,5,1,7,2,3)
 fi
 
 # Populate nut-upsd config files
@@ -59,7 +59,6 @@ sleep 5
 /sbin/upsd
 sleep 5
 /sbin/upsmon
-
-# Use supervisord to start all processes
-echo -e "Starting supervisord"
-supervisord -c /etc/supervisor/conf.d/supervisord.conf
+sleep 10
+cd /app/webNUT/webnut
+pserv ../production.ini
