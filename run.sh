@@ -55,10 +55,11 @@ sed -i 's/MODE=none/MODE=standalone/g' /etc/nut/nut.conf
 
 # Start nut services in order
 /sbin/upsdrvctl start
-sleep 5
+sleep 10
 /sbin/upsd
-sleep 5
+sleep 10
 /sbin/upsmon
 sleep 10
+
 cd /app/webNUT/webnut
-pserv ../production.ini
+pserve ../production.ini
