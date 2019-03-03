@@ -22,7 +22,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install and configure webnut
-RUN mkdir /app\
+RUN pip install setuptools \
+    && pip install config \
+    && mkdir /app\
     && cd /app \
     && git clone https://github.com/rshipp/python-nut2.git \
     && cd python-nut2 \
@@ -30,7 +32,6 @@ RUN mkdir /app\
     && cd .. \
     && git clone https://github.com/rshipp/webNUT.git \
     && cd webNUT  \
-    && pip install config \
     && pip install -e . 
 
 # Add run and set permissions
