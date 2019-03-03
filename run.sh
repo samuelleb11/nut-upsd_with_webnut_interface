@@ -36,6 +36,7 @@ EOF
 
 cat >/etc/nut/upsmon.conf <<EOF
 MONITOR $UPS_NAME@localhost 1 $API_USER $API_PASSWORD master
+NOTIFYFLAG ONLINE   SYSLOG+WALL
 SHUTDOWNCMD "$SHUTDOWN_CMD"
 EOF
 
@@ -51,6 +52,13 @@ password = '$API_PASSWORD'
 EOF
 
 sed -i 's/MODE=none/MODE=standalone/g' /etc/nut/nut.conf
+
+# Start nut services in order
+/sbin/upsdrvctl start
+sleep 5
+/sbin/upsd
+sleep 5
+/sbin/upsmon
 
 # Use supervisord to start all processes
 echo -e "Starting supervisord"
