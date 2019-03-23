@@ -48,18 +48,22 @@ SHUTDOWNCMD "$SHUTDOWN_CMD"
 EOF
 fi
 
-chgrp -R nut /etc/nut /dev/bus/usb
-chmod -R o-rwx /etc/nut
-
 # Create webNUT config file
-cat >/app/webNUT/webnut/config.py <<EOF
+if [[ ! -f /app/webNUT/webnut/config.py ]]; then
+  cat >/app/webNUT/webnut/config.py <<EOF
 server = '127.0.0.1'
 port = '3493'
 username = '$API_USER'
 password = '$API_PASSWORD'
 EOF
+fi
 
+# Set to standalone mode
 sed -i 's/MODE=none/MODE=standalone/g' /etc/nut/nut.conf
+
+# Set permissions
+chgrp -R nut /etc/nut /dev/bus/usb
+chmod -R o-rwx /etc/nut
 
 # Start nut services in order
 exec /sbin/upsdrvctl start &
