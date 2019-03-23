@@ -66,11 +66,11 @@ chgrp -R nut /etc/nut /dev/bus/usb
 chmod -R o-rwx /etc/nut
 
 # Start nut services in order
-exec /sbin/upsdrvctl start &
+exec /sbin/upsdrvctl -D start &
 sleep 30
-/sbin/upsd
+/sbin/upsd -D &
 sleep 10
-/sbin/upsmon
+/sbin/upsmon -D &
 sleep 30
 
 cd /app/webNUT/webnut
