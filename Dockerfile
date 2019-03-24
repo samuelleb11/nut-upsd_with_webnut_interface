@@ -18,7 +18,7 @@ ENV SHUTDOWN_CMD="echo 'System shutdown not configured!'"
 
 # Update and install packages
 RUN apt-get update \
-    && apt-get install nut curl git python3-pip python-pip supervisor -yq \
+    && apt-get install nut curl git python3-pip python-pip tzdata -yq \
     && rm -rf /var/lib/apt/lists/*
 
 # Install and configure webnut
