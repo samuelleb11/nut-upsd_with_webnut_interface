@@ -67,7 +67,7 @@ chmod -R o-rwx /etc/nut
 
 # Start nut services in order
 exec /sbin/upsdrvctl start &
-sleep 30
+sleep 45
 /sbin/upsd
 sleep 10
 /sbin/upsmon
