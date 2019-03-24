@@ -69,12 +69,12 @@ chmod -R o-rwx /etc/nut
 exec /sbin/upsdrvctl start &
 sleep 45
 /sbin/upsd
-sleep 10
+sleep 15
 /sbin/upsmon
 sleep 30
 
 # Disable UPS beep (blazer_usb)
-/bin/upscmd ups beeper.toggle
+/bin/upscmd ups beeper.toggle &
 
 
 cd /app/webNUT/webnut
