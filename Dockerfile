@@ -1,6 +1,4 @@
-FROM ubuntu:18.04
-
-LABEL maintainer="Jakezp <jakezp@gmail.com>"
+FROM docker-hub-cache.whnet.ca/library/ubuntu:18.04
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV NUT_VERSION 2.7.4
